@@ -4,16 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   fetchBlogPosts()
 
   function fetchBlogPosts() {
-     // Skeleton loading göster
-     const blogList = document.getElementById("blog-list")
-     if (blogList) {
-       blogList.innerHTML = `
-                 <div class="skeleton-card"></div>
-                 <div class="skeleton-card"></div>
-                 <div class="skeleton-card"></div>
-             `
-     }
-
+    // Skeleton loading göster (Kaldırıldı)
     fetch("https://learning-journey-new-backend.onrender.com/api/blog")
       .then((response) => {
         if (!response.ok) {
@@ -80,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
     modal.className = "modal"
     modal.innerHTML = `
             <div class="modal-content">
-                <button class="close-button">&times;</button>
+                <button class="close-button">×</button>
                 <h2>${safeTitle}</h2>
                 <div class="modal-body">
                     <p>${safeContent}</p>
@@ -133,11 +124,11 @@ document.addEventListener("DOMContentLoaded", () => {
   function escapeHTML(str) {
     if (!str) return ""
     return str
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#039;")
+      .replace(/&/g, "&")
+      .replace(/</g, "<")
+      .replace(/>/g, ">")
+      .replace(/"/g, """)
+      .replace(/'/g, "'")
   }
 
   // Modal için CSS ekle
@@ -203,40 +194,6 @@ document.addEventListener("DOMContentLoaded", () => {
         font-style: italic;
         color: var(--secondary-text);
     }
-    
-    .skeleton-card {
-        height: 150px;
-        background: var(--card-bg);
-        border-radius: 15px;
-        margin-bottom: 30px;
-        position: relative;
-        overflow: hidden;
-    }
-    
-    .skeleton-card::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        transform: translateX(-100%);
-        background-image: linear-gradient(
-            90deg,
-            rgba(255, 255, 255, 0) 0,
-            rgba(255, 255, 255, 0.2) 20%,
-            rgba(255, 255, 255, 0.5) 60%,
-            rgba(255, 255, 255, 0)
-        );
-        animation: shimmer 2s infinite;
-    }
-    
-    @keyframes shimmer {
-        100% {
-            transform: translateX(100%);
-        }
-    }
     `
   document.head.appendChild(modalStyle)
 })
-
