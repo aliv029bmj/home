@@ -4,7 +4,16 @@ document.addEventListener("DOMContentLoaded", () => {
   fetchBlogPosts()
 
   function fetchBlogPosts() {
-    // Skeleton loading göster (Kaldırıldı)
+    const blogList = document.getElementById("blog-list")
+    if (!blogList) return
+
+    // Yüklenme göstergesi ekle
+    blogList.innerHTML = `
+      <div class="loading-indicator">
+        <i class="fas fa-spinner fa-spin"></i> Yükleniyor...
+      </div>
+    `
+
     fetch("https://learning-journey-new-backend.onrender.com/api/blog")
       .then((response) => {
         if (!response.ok) {
@@ -13,21 +22,19 @@ document.addEventListener("DOMContentLoaded", () => {
         return response.json()
       })
       .then((data) => {
+        // Yüklenme göstergesini kaldır ve verileri render et
+        blogList.innerHTML = ""
         renderBlogPosts(data)
       })
       .catch((error) => {
         console.error("Error fetching blog posts:", error)
-        if (blogList) {
-          blogList.innerHTML = "<p>Couldn't load blog posts, backend might be down.</p>"
-        }
+        blogList.innerHTML = "<p>Couldn't load blog posts, backend might be down.</p>"
       })
   }
 
   function renderBlogPosts(posts) {
     const blogList = document.getElementById("blog-list")
     if (!blogList) return
-
-    blogList.innerHTML = ""
 
     if (!posts || posts.length === 0) {
       blogList.innerHTML = "<p>No blog posts available.</p>"
@@ -37,7 +44,8 @@ document.addEventListener("DOMContentLoaded", () => {
     posts.forEach((post, index) => {
       const item = document.createElement("div")
       item.className = "blog-post"
-      item.style.animationDelay = `${index * 0.1}s`
+      item.style.animationDelay = `${index * 0.1}s` // slideInUp animasyonu için gecikme
+      item.style.animation = `slideInUp 0.8s ease-out forwards` // Animasyonu manuel olarak uygula
 
       // XSS koruması için içeriği güvenli hale getir
       const safeTitle = escapeHTML(post.title)
@@ -194,6 +202,23 @@ document.addEventListener("DOMContentLoaded", () => {
         font-style: italic;
         color: var(--secondary-text);
     }
-    `
+
+    .loading-indicator {
+        text-align: center;
+        padding: 20px;
+        color: var(--accent-color);
+        font-size: 1.2em;
+    }
+
+    .loading-indicator i {
+        margin-right: 10px;
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+  `
   document.head.appendChild(modalStyle)
 })
