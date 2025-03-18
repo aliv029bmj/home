@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Learning Journey | Resources</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .container { 
+            max-width: 1200px; 
+            margin: 60px auto; 
+            padding: 0 20px; 
+            display: flex; 
+            justify-content: space-between; 
+            gap: 40px; 
+            flex-wrap: wrap; 
+        }
+        .column { flex: 1; min-width: 0; }
+        .resource-list { display: flex; flex-direction: column; gap: 30px; }
+        .resource-item { 
+            background: var(--card-bg); 
+            padding: 20px; 
+            border-radius: 8px; 
+            border-left: 4px solid var(--accent-color); 
+            transition: all 0.4s ease; 
+            animation: slideInUp 0.8s ease-out forwards; 
+            opacity: 0; 
+            position: relative; 
+            z-index: 10; 
+        }
+        .resource-item:nth-child(1) { animation-delay: 0.1s; }
+        .resource-item:nth-child(2) { animation-delay: 0.2s; }
+        .resource-item:nth-child(3) { animation-delay: 0.3s; }
+        .resource-item:hover { transform: translateY(-8px); box-shadow: 0 6px 20px rgba(0, 212, 255, 0.3); }
+        .resource-item h3 { font-size: 1.5em; color: var(--text-color); margin-bottom: 8px;}
+        .resource-item a { 
+            color: var(--accent-color); 
+            text-decoration: none; 
+            transition: color 0.3s ease; 
+            display: inline-block; 
+            margin-top: 8px; 
+        }
+        .resource-item a:hover { color: var(--accent-color); }
+        .resource-item p { color: var(--secondary-text); font-size: 0.9em; margin-top: 8px; }
+        h3 { color: var(--accent-color); font-size: 1.7em; margin-bottom: 12px;}.section-title { text-align: center; 
+        }
+        .filter-container { 
+            margin-bottom: 20px; 
+            text-align: center; 
+            width: 100%; 
+            position: relative; 
+        }
+        .custom-select {
+            position: relative;
+            width: 250px;
+            margin: 0 auto;
+            display: inline-block;
+        }
+        .select-header {
+            padding: 10px 35px 10px 12px;
+            background: var(--card-bg);
+            color: var(--text-color);
+            border: 1px solid var(--accent-color);
+            border-radius: 6px;
+            font-family: 'Fira Code', monospace;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px var(--shadow-color);
+            line-height: 1.4;
+            letter-spacing: 0.5px;
+            position: relative;
+        }
+        .select-header:hover {
+            border-color: var(--accent-color);
+            box-shadow: 0 4px 12px rgba(0, 212, 255, 0.25);
+            background: var(--card-bg);
+        }
+        .select-header::after {
+            content: '\f078';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--accent-color);
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.9em;
+            opacity: 0.8;
+            transition: color 0.3s ease, opacity 0.3s ease;
+        }
+        .select-header:hover::after {
+            color: var(--accent-color);
+            opacity: 1;
+        }
+        .select-options {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--card-bg);
+            border: 1px solid var(--accent-color);
+            border-radius: 6px;
+            max-height: 300px;
+            overflow-y: auto;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 212, 255, 0.2);
+            animation: slideDown 0.2s ease-out;
+            margin-top: 2px;
+        }
+        .select-options.show {
+            display: block;
+        }
+        .select-options li {
+            padding: 10px 12px;
+            color: var(--text-color);
+            background: var(--card-bg);
+            font-family: 'Fira Code', monospace;
+            font-size: 1em;
+            cursor: pointer;
+            line-height: 1.4;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+        .select-options li:hover {
+            background: var(--accent-color);
+            color: #1a1a1a;
+        }
+        .select-options::-webkit-scrollbar {
+            width: 6px;
+        }
+        .select-options::-webkit-scrollbar-track {
+            background: var(--bg-color);
+        }
+        .select-options::-webkit-scrollbar-thumb {
+            background: var(--accent-color);
+            border-radius: 3px;
+        }
+        .description { 
+            color: var(--text-color); 
+            font-size: 0.9em; 
+            display: none; 
+            position: relative; 
+            background: var(--card-bg); 
+            padding: 15px; 
+            border-radius: 6px; 
+            border: 1px solid var(--accent-color); 
+            box-shadow: 0 4px 12px rgba(0, 212, 255, 0.15); 
+            z-index: 9999; 
+            width: 100%; 
+            top: 100%; 
+            left: 0; 
+            transition: all 0.3s ease;
+        }
+        .resource-item:hover .description { 
+            display: block; 
+        }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        @media (max-width: 768px) { 
+            .container { flex-direction: column; }
+            .column { width: 100%; }
+            .custom-select { 
+                width: 100%; 
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body data-theme="dark">
+    <button class="theme-toggle" onclick="toggleTheme()">
+        <i class="fas fa-moon"></i>
+    </button>
+    <header>
+        <h1>Resources</h1>
+    </header>
+    <nav>
+        <a href="/mysite/">Home</a>
+        <a href="/mysite/journal/">Journal</a>
+        <a href="/mysite/projects/">Projects</a>
+        <a href="/mysite/blog/">Blog</a>
+        <a href="/mysite/resources/">Resources</a>
+        <a href="/mysite/contact/">Contact</a>
+    </nav>
+    <div class="container">
+        <div class="filter-container">
+            <div class="custom-select">
+                <div class="select-header">All Categories</div>
+                <ul class="select-options">
+                    <li data-value="all">All Categories</li>
+                    <li data-value="Backend">Backend</li>
+                    <li data-value="Frontend">Frontend</li>
+                    <li data-value="Backend - Beginner">Backend - Beginner</li>
+                    <li data-value="Backend - Intermediate">Backend - Intermediate</li>
+                    <li data-value="Backend - Advanced">Backend - Advanced</li>
+                    <li data-value="Backend - Tools">Backend - Tools</li>
+                    <li data-value="Backend - Practice">Backend - Practice</li>
+                    <li data-value="Backend - Roadmap">Backend - Roadmap</li>
+                    <li data-value="Frontend - Beginner">Frontend - Beginner</li>
+                    <li data-value="Frontend - Intermediate">Frontend - Intermediate</li>
+                    <li data-value="Frontend - Advanced">Frontend - Advanced</li>
+                    <li data-value="Frontend - Tools">Frontend - Tools</li>
+                    <li data-value="Frontend - Practice">Frontend - Practice</li>
+                </ul>
+                <input type="hidden" id="category-filter" value="all">
+            </div>
+        </div>
+        <div class="column">
+            <h3 class="section-title"> Java Backend Resources</h3>
+            <div class="resource-list" id="backend-resources"></div>
+        </div>
+        <div class="column">
+            <h3 class="section-title">Frontend Resources</h3>
+            <div class="resource-list" id="frontend-resources"></div>
+        </div>
+    </div>
+    <script src="../js/main.js"></script>
+    <script src="../js/resources.js"></script>
+    <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'921938f3bef61d70',t:'MTc0MjE4MDI0Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+</body>
+</html>
+

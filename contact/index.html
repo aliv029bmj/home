@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Learning Journey | Contact</title>
+    <meta property="og:title" content="Our Learning Journey | Contact">
+    <meta property="og:description" content="Get in touch with us for collaboration or questions!">
+    <meta property="og:image" content="https://aliv029bmj.github.io/mysite/images/favicon.png">
+    <meta property="og:url" content="https://aliv029bmj.github.io/mysite/contact/">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-theme="dark">
+    <button class="theme-toggle" onclick="toggleTheme()">
+        <i class="fas fa-moon"></i>
+    </button>
+    <header>
+        <h1>Contact Us</h1>
+    </header>
+    <nav>
+        <a href="/mysite/">Home</a>
+        <a href="/mysite/journal/">Journal</a>
+        <a href="/mysite/projects/">Projects</a>
+        <a href="/mysite/blog/">Blog</a>
+        <a href="/mysite/resources/">Resources</a>
+        <a href="/mysite/contact/">Contact</a>
+    </nav>
+    <div class="container">
+        <div class="contact-section">
+            <h2>Get in Touch</h2>
+            <form class="contact-form" onsubmit="handleSubmit(event)">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+                
+                <button type="submit">Send Message</button>
+            </form>
+            <div class="social-links">
+                <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </div>
+    <script src="../js/main.js"></script>
+    <script src="../js/contact.js"></script>
+</body>
+</html>
+

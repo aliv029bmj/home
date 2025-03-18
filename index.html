@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Learning Journey | Home</title>
+    <!-- SEO için meta etiketleri -->
+    <meta name="description" content="Follow our coding journey as we learn and build projects together. A personal site by Lucky and Bmj.">
+    <meta name="keywords" content="coding, learning, web development, programming, journey">
+    <!-- Open Graph Meta Tags for Preview -->
+    <meta property="og:title" content="Our Learning Journey | Home">
+    <meta property="og:description" content="Follow our coding journey as we learn and build projects together.">
+    <meta property="og:image" content="https://aliv029bmj.github.io/mysite/images/favicon.png">
+    <meta property="og:url" content="https://aliv029bmj.github.io/mysite/">
+    <meta name="twitter:card" content="summary_large_image">
+    <!-- Preconnect ve preload -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Diğer stil tanımları buraya gelecek -->
+    <style>
+        header { 
+            padding: 80px 20px; 
+        }
+        header h1 { 
+            font-size: 3.5em; 
+        }
+        header p { 
+            font-size: 1.3em; 
+            color: var(--secondary-text); 
+            margin-top: 10px; 
+            animation: fadeIn 2s ease-out; 
+        }
+        .hero { 
+            max-width: 1200px; 
+            margin: 60px auto; 
+            padding: 0 20px; 
+            text-align: center; 
+        }
+        .hero h2 { 
+            font-size: 2.5em; 
+            margin-bottom: 40px; 
+            color: var(--accent-color); 
+            animation: fadeInUp 1s ease-out; 
+        }
+        .team { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 30px; 
+            margin-top: 40px; 
+            max-width: 900px; 
+            margin-left: auto; 
+            margin-right: auto; 
+        }
+        .member { 
+            background: var(--card-bg); 
+            padding: 20px; 
+            border-radius: 15px;
+            border: 2px solid var(--card-border); 
+            text-align: center; 
+            transition: all 0.3s ease; 
+            box-shadow: 0 4px 15px var(--shadow-color);
+            position: relative; 
+            height: 150px; 
+            overflow: hidden; 
+            animation: slideInUp 1s ease-out 0.5s backwards; 
+        }
+        [data-theme="light"] .member { 
+            background: var(--card-bg); 
+            border: 2px solid var(--card-border); 
+            box-shadow: 0 4px 15px var(--shadow-color);
+        }
+        .member.expanded { 
+            height: auto; 
+            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.3); 
+            border-color: var(--accent-color); 
+            transition: height 0.5s ease; 
+        }
+        [data-theme="light"] .member.expanded { 
+            box-shadow: 0 8px 25px rgba(30, 136, 229, 0.1); 
+        }
+        .member:hover { 
+            transform: translateY(-5px); 
+            border-color: var(--accent-color); 
+            box-shadow: 0 8px 20px rgba(0, 212, 255, 0.2); 
+        }
+        [data-theme="light"] .member:hover { 
+            border-color: var(--accent-color); 
+            box-shadow: 0 8px 20px rgba(30, 136, 229, 0.1); 
+        }
+        .member i { 
+            font-size: 2.5em;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+            text-shadow: 0 0 3px rgba(0, 212, 255, 0.3); 
+        }
+        [data-theme="light"] .member i { 
+            color: var(--accent-color);
+            text-shadow: none; 
+        }
+        .member:hover i { 
+            transform: scale(1.1); 
+        }
+        [data-theme="light"] .member:hover i { 
+            transform: scale(1.1); 
+            text-shadow: none; 
+        }
+        .member h3 { 
+            font-size: 1.4em; 
+            color: var(--text-color);
+            transition: all 0.3s ease; 
+            margin-bottom: 10px; 
+        }
+        [data-theme="light"] .member h3 { 
+            color: var(--text-color);
+        }
+        .member p { 
+            color: var(--secondary-text);
+            font-size: 0.9em; 
+            transition: all 0.5s ease; 
+            max-height: 0; 
+            opacity: 0; 
+            overflow: hidden; 
+        }
+        [data-theme="light"] .member p { 
+            color: var(--secondary-text);
+        }
+        .member.expanded p { 
+            max-height: 500px; 
+            opacity: 1; 
+            animation: slideDown 0.5s ease forwards; 
+        }
+        @keyframes slideDown {
+            from {
+                max-height: 0;
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                max-height: 500px;
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .info-icon { 
+            position: absolute; 
+            bottom: -7px; 
+            right: 8px; 
+            font-size: 0.5em; 
+            color: var(--accent-color); 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+            border: none; 
+            background: none; 
+        }
+        .info-icon:hover { 
+            color: #00ffea; 
+            transform: scale(1.2); 
+            background: none; 
+        }
+        .mission { 
+            background: var(--card-bg); 
+            padding: 40px; 
+            border-radius: 15px; 
+            border: 2px solid var(--card-border); 
+            margin: 60px auto; 
+            max-width: 900px; 
+            text-align: center; 
+            box-shadow: 0 4px 15px var(--shadow-color); 
+            animation: fadeInUp 1.2s ease-out; 
+        }
+        [data-theme="light"] .mission { 
+            background: var(--card-bg); 
+            border: 2px solid var(--card-border); 
+            box-shadow: 0 4px 15px var(--shadow-color); 
+        }
+        .mission:hover { 
+            transform: translateY(-5px); 
+            border-color: var(--accent-color); 
+            box-shadow: 0 8px 20px rgba(0, 212, 255, 0.2); 
+        }
+        [data-theme="light"] .mission:hover { 
+            border-color: var(--accent-color); 
+            box-shadow: 0 8px 20px rgba(30, 136, 229, 0.1); 
+        }
+        .mission h2 { 
+            color: var(--accent-color); 
+            font-size: 2em; 
+            margin-bottom: 20px; 
+        }
+        [data-theme="light"] .latest-log { 
+            background: #FDFDFD; 
+        }
+        .latest-log { 
+            margin-top: 20px; 
+            padding: 20px; 
+            background: #2A2A2A; 
+            border-radius: 10px; 
+            border-left: 5px solid var(--accent-color);
+            transition: all 0.3s ease;
+        }
+        .latest-log h3 { color: var(--text-color); margin-bottom: 10px; }
+        .latest-log p { color: var(--secondary-text); }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body data-theme="dark">
+    <button class="theme-toggle" onclick="toggleTheme()">
+        <i class="fas fa-moon"></i>
+    </button>
+    <header>
+        <h1>Our Learning Journey</h1>
+        <p>A Coding Adventure with Lucky & Bmj</p>
+    </header>
+    <nav>
+        <a href="/mysite/">Home</a>
+        <a href="/mysite/journal/">Journal</a>
+        <a href="/mysite/projects/">Projects</a>
+        <a href="/mysite/blog/">Blog</a>
+        <a href="/mysite/resources/">Resources</a>
+        <a href="/mysite/contact/">Contact</a>
+    </nav>
+    <div class="hero">
+        <h2>Hello, Who Are We?</h2>
+        <div class="team">
+            <div class="member">
+                <i class="fas fa-user-astronaut"></i>
+                <h3>Lucky</h3>
+                <p>"Hello! I'm Lucky, a passionate frontend developer and design enthusiast. I focus on creating intuitive and visually appealing interfaces that enhance user experience. In this project, I’m responsible for crafting the frontend using modern tools like React, while also refining the site’s design with dynamic elements, such as the dark/light theme toggle. My goal is to build seamless and engaging web experiences that users love to interact with!"</p>
+                <button class="info-icon" onclick="expandMember(this)">
+                    <i class="fas fa-info-circle"></i>
+                </button>
+            </div>
+            <div class="member">
+                <i class="fas fa-user-ninja"></i>
+                <h3>Bmj</h3>
+                <p>"Greetings! I'm Bmj, a dedicated Java backend developer with a deep interest in building robust and scalable systems. For this project, I’ve been working on the backend using Spring Boot and PostgreSQL, ensuring smooth API integrations and efficient data management. I’m driven by the challenge of solving complex problems and optimizing performance to create a reliable foundation for our web application."</p>
+                <button class="info-icon" onclick="expandMember(this)">
+                    <i class="fas fa-info-circle"></i>
+                </button>
+            </div>
+        </div>
+        <div class="mission">
+            <h2>Our Mission</h2>
+            <p>We’re building this site from scratch to share our journey.</p>
+            <div class="latest-log" id="latest-log">
+                <h3>Unpacking the Latest Chapter of Our Journey...</h3>
+                <p>Please Wait a Moment.</p>
+            </div>
+        </div>
+    </div>
+    <script src="js/main.js"></script>
+    <script src="js/home.js"></script>
+    <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'921938f3baf5450d',t:'MTc0MjE4MDI0Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+</body>
+</html>
+

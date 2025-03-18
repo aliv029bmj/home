@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Learning Journey | Projects</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .container { 
+            max-width: 1200px; 
+            margin: 60px auto; 
+            padding: 0 20px; 
+        }
+        .project-list { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 30px; 
+        }
+        .project-item { 
+            background: var(--card-bg); 
+            padding: 20px; 
+            border-radius: 8px; 
+            border: 1px solid var(--card-border); 
+            transition: all 0.4s ease; 
+            animation: slideInUp 0.8s ease-out forwards; 
+            opacity: 0; 
+            box-shadow: 0 2px 8px var(--shadow-color); 
+            position: relative; 
+            overflow: hidden; 
+        }
+        .project-item:nth-child(1) { animation-delay: 0.1s; }
+        .project-item:nth-child(2) { animation-delay: 0.2s; }
+        .project-item:nth-child(3) { animation-delay: 0.3s; }
+        .project-item:nth-child(4) { animation-delay: 0.4s; }
+        .project-item:nth-child(5) { animation-delay: 0.5s; }
+        .project-item:hover { 
+            transform: translateY(-8px); 
+            box-shadow: 0 6px 20px rgba(0, 212, 255, 0.3); 
+            border-color: var(--accent-color); 
+        }
+        .project-item .icon { 
+            font-size: 2em; 
+            color: var(--accent-color); 
+            margin-bottom: 10px; 
+            text-align: center; 
+            display: block; 
+            transition: color 0.3s ease; 
+        }
+        .project-item:hover .icon { 
+            color: var(--accent-color); 
+        }
+        .project-item h3 { 
+            font-size: 1.5em; 
+            color: var(--text-color); 
+            margin-bottom: 8px; 
+            line-height: 1.4; 
+            letter-spacing: 0.5px; 
+            text-align: center; 
+        }
+        .project-item p { 
+            color: var(--secondary-text); 
+            font-size: 0.9em; 
+            margin-bottom: 10px; 
+            line-height: 1.5; 
+            text-align: center; 
+        }
+        .project-item a { 
+            color: var(--accent-color); 
+            text-decoration: none; 
+            transition: color 0.3s ease; 
+            font-size: 0.95em; 
+            display: block; 
+            text-align: center; 
+        }
+        .project-item a:hover { 
+            color: var(--accent-color); 
+        }
+        @media (max-width: 768px) { 
+            .project-list { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body data-theme="dark">
+    <button class="theme-toggle" onclick="toggleTheme()">
+        <i class="fas fa-moon"></i>
+    </button>
+    <header>
+        <h1>Projects</h1>
+    </header>
+    <nav>
+        <a href="/mysite/">Home</a>
+        <a href="/mysite/journal/">Journal</a>
+        <a href="/mysite/projects/">Projects</a>
+        <a href="/mysite/blog/">Blog</a>
+        <a href="/mysite/resources/">Resources</a>
+        <a href="/mysite/contact/">Contact</a>
+    </nav>
+    <div class="container">
+        <div class="project-list" id="project-list"></div>
+    </div>
+    <script src="../js/main.js"></script>
+    <script src="../js/projects.js"></script>
+    <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'921938f3ba0e8bb7',t:'MTc0MjE4MDI0Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+</body>
+</html>
+
