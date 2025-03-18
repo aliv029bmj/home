@@ -19,31 +19,7 @@ const LearningJourney = {
     }
   },
 
-  // Skeleton loading
-  showSkeleton: (container, count = 3, type = "card") => {
-    const containerEl = document.getElementById(container)
-    if (!containerEl) return
-
-    containerEl.innerHTML = ""
-
-    for (let i = 0; i < count; i++) {
-      const skeleton = document.createElement("div")
-
-      if (type === "card") {
-        skeleton.className = "skeleton-card skeleton"
-        skeleton.style.height = "150px"
-        skeleton.style.marginBottom = "20px"
-        skeleton.style.borderRadius = "var(--border-radius-md)"
-      } else if (type === "list-item") {
-        skeleton.className = "skeleton-list-item skeleton"
-        skeleton.style.height = "30px"
-        skeleton.style.marginBottom = "10px"
-        skeleton.style.borderRadius = "var(--border-radius-sm)"
-      }
-
-      containerEl.appendChild(skeleton)
-    }
-  },
+ 
 
   // Hata mesajı gösterme
   showError: (container, message) => {
