@@ -4,15 +4,6 @@ document.addEventListener("DOMContentLoaded", () => {
   fetchBlogPosts()
 
   function fetchBlogPosts() {
-    // Skeleton loading göster
-    const blogList = document.getElementById("blog-list")
-    if (blogList) {
-      blogList.innerHTML = `
-                <div class="skeleton-card"></div>
-                <div class="skeleton-card"></div>
-                <div class="skeleton-card"></div>
-            `
-    }
 
     fetch("https://learning-journey-new-backend.onrender.com/api/blog")
       .then((response) => {
