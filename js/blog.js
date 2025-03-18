@@ -44,8 +44,8 @@ document.addEventListener("DOMContentLoaded", () => {
     posts.forEach((post, index) => {
       const item = document.createElement("div")
       item.className = "blog-post"
-      item.style.animationDelay = `${index * 0.1}s` // slideInUp animasyonu için gecikme
-      item.style.animation = `slideInUp 0.8s ease-out forwards` // Animasyonu manuel olarak uygula
+      item.style.animationDelay = `${index * 0.1}s` // Journal'daki gibi gecikme
+      item.style.animation = `slideInUp 0.8s ease-out forwards` // Journal'daki gibi animasyon
 
       // XSS koruması için içeriği güvenli hale getir
       const safeTitle = escapeHTML(post.title)
