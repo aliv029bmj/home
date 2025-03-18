@@ -1,79 +1,83 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Learning Journey | Blog</title>
-    <meta name="description" content="Read our latest blog posts about web development, programming, and our learning experiences.">
-    <meta name="keywords" content="blog, coding, web development, programming, learning">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="../images/favicon.png">
-    <link rel="stylesheet" href="../css/style.css">
-    <style>
-        .container { 
-            max-width: 1200px; 
-            margin: 60px auto; 
-            padding: 0 20px; 
-        }
-        .blog-list { 
-            display: grid; 
-            gap: 30px; 
-        }
-        .blog-post { 
-            background: var(--card-bg); 
-            padding: 25px; 
-            border-radius: 15px; 
-            border-left: 5px solid var(--accent-color); 
-            transition: all 0.4s ease; 
-            animation: slideInUp 0.8s ease-out forwards; 
-            opacity: 0; 
-            cursor: pointer; 
-        }
-        .blog-post:nth-child(1) { animation-delay: 0.1s; }
-        .blog-post:nth-child(2) { animation-delay: 0.2s; }
-        .blog-post:hover { 
-            transform: translateY(-10px); 
-            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.3); 
-        }
-        .blog-post h3 { 
-            font-size: 1.6em; 
-            color: var(--text-color); 
-            margin-bottom: 10px; 
-        }
-        .blog-post p { 
-            color: var(--secondary-text); 
-            font-size: 0.95em; 
-            margin-bottom: 10px; 
-        }
-        .blog-post .meta { 
-            font-size: 0.85em; 
-            color: #778da9; 
-            font-style: italic; 
-        }
-    </style>
-</head>
-<body data-theme="dark">
-    <button class="theme-toggle" onclick="toggleTheme()">
-        <i class="fas fa-moon"></i>
-    </button>
-    <header>
-        <h1>Blog</h1>
-    </header>
-    <nav>
-        <a href="/neonjourney/">Home</a>
-        <a href="/neonjourney/journal/">Journal</a>
-        <a href="/neonjourney/projects/">Projects</a>
-        <a href="/neonjourney/blog/">Blog</a>
-        <a href="/neonjourney/resources/">Resources</a>
-        <a href="/neonjourney/contact/">Contact</a>
-    </nav>
-    <div class="container">
-         <div class="blog-list" id="blog-list">
-             <!-- Blog posts will be loaded here -->
-         </div>
-     </div>
-    <script src="../js/main.js"></script>
-    <script src="../js/blog.js"></script>
-</body>
-</html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Our Learning Journey | Blog</title>
+     <meta name="description" content="Read our latest blog posts about web development, programming, and our learning experiences.">
+     <meta name="keywords" content="blog, coding, web development, programming, learning">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+     <link rel="icon" type="image/png" href="../images/favicon.png">
+     <link rel="stylesheet" href="../css/style.css">
+     <style>
+         .container { 
+             max-width: 1200px; 
+             margin: 60px auto; 
+             padding: 0 20px; 
+         }
+         .blog-list { 
+             display: grid; 
+             gap: 30px; 
+         }
+         .blog-post { 
+             background: var(--card-bg); 
+             padding: 25px; 
+             border-radius: 15px; 
+             border-left: 5px solid var(--accent-color); 
+             transition: all 0.4s ease; 
+             animation: slideInUp 0.8s ease-out forwards; 
+             opacity: 0; 
+             cursor: pointer; 
+         }
+         .blog-post:nth-child(1) { animation-delay: 0.1s; }
+         .blog-post:nth-child(2) { animation-delay: 0.2s; }
+         .blog-post:hover { 
+             transform: translateY(-10px); 
+             box-shadow: 0 10px 25px rgba(0, 212, 255, 0.3); 
+         }
+         .blog-post h3 { 
+             font-size: 1.6em; 
+             color: var(--text-color); 
+             margin-bottom: 10px; 
+         }
+         .blog-post p { 
+             color: var(--secondary-text); 
+             font-size: 0.95em; 
+             margin-bottom: 10px; 
+         }
+         .blog-post .meta { 
+             font-size: 0.85em; 
+             color: #778da9; 
+             font-style: italic; 
+         }
+     </style>
+ </head>
+ <body data-theme="dark">
+     <button class="theme-toggle" onclick="toggleTheme()">
+         <i class="fas fa-moon"></i>
+     </button>
+     <header>
+         <h1>Blog</h1>
+     </header>
+     <nav>
+         <a href="/neonjourney/">Home</a>
+         <a href="/neonjourney/journal/">Journal</a>
+         <a href="/neonjourney/projects/">Projects</a>
+         <a href="/neonjourney/blog/">Blog</a>
+         <a href="/neonjourney/resources/">Resources</a>
+         <a href="/neonjourney/contact/">Contact</a>
+     </nav>
+     <div class="container">
+          <div class="blog-list" id="blog-list">
+              <!-- Blog posts will be loaded here -->
+              <!-- Skeleton loading placeholder -->
+              <div class="skeleton-card"></div>
+              <div class="skeleton-card"></div>
+              <div class="skeleton-card"></div>
+          </div>
+      </div>
+     <script src="../js/main.js"></script>
+     <script src="../js/blog.js"></script>
+ </body>
+ </html>
